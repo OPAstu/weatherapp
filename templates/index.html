@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今日の天気</title>
+</head>
+<body>
+    <h1>今日の天気</h1>
+
+    <!-- 天気説明テキスト（気象庁そのままの文章） -->
+    <p>{{ current_weather }}</p>
+
+    <!-- 対応する天気画像 -->
+    <img src="{{ image_path }}" alt="天気画像" width="300">
+
+</body>
+</html>
