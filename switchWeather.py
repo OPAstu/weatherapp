@@ -1,25 +1,74 @@
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
-# 天気ごとの画像辞書
-weather_images = {
-    "晴れ": "static/imagenew/sunny.png",
-    "曇り": "static/imagenew/cloudy.png",
-    "雨": "static/imagenew/rainy.png",
-    "雪": "static/imagenew/snowy.png",
-    "雷": "static/imagenew/thunder.png"
-}
-
-@app.route('/')
-def index():
-    # ここで天気情報を手動で変更
-    current_weather = "晴れ"  # 例として「晴れ」を設定
-
-    # 天気情報に基づいて画像パスを取得
-    image_path = weather_images.get(current_weather, weather_images["晴れ"])
-
-    return render_template('index.html', image_path=image_path, current_weather=current_weather)
-
-if __name__ == '__main__':
-    app.run(debug=True)
+def switchweather(weather,images):
+    if weather.find("時々") >-1: #文字の検出
+        split=weather.split('時々')#時々　で区切るようにする
+        if split[0]=="晴れ":#区切ったときの0文字目
+         return images[0]
+        elif split[0]=="くもり":
+            return images[1]      #＝＝（同じ）
+        elif split[0]=="雨":
+            return images[2]
+        elif split[0]=="雪":
+            return  images[3]
+        elif split[0]=="雷雨":
+            return images[4]
+    if weather.find("後") >-1:
+        split=weather.split('後')
+        if "晴れ"in split[1]:
+         return images[0]
+        elif "くもり"in split[1]:
+            return images[1]      #＝＝（同じ）
+        elif "雨" in split[1]:
+            return images[2]
+        elif "雪"in split[1]:
+            return  images[3]
+        elif "雷雨"in split[1]:
+            return images[4]
+    if weather.find("から") >-1:
+        split=weather.split('から')
+        if split[1]=="晴れ":
+         return images[0]
+        elif split[1]=="くもり":
+            return images[1]      #＝＝（同じ）
+        elif split[1]=="雨":
+            return images[2]
+        elif split[1]=="雪":
+            return  images[3]
+        elif split[1]=="雷雨":
+            return images[4]
+    if weather.find("所により") >-1: #文字の検出
+        split=weather.split('所により')
+        if split[0]=="晴れ":#区切ったときの0文字目
+         return images[0]
+        elif split[0]=="くもり":
+            return images[1]      #＝＝（同じ）
+        elif split[0]=="雨":
+            return images[2]
+        elif split[0]=="雪":
+            return  images[3]
+        elif split[0]=="雷雨":
+            return images[4]
+    if weather.find("明け方まで") >-1:
+        split=weather.split('明け方まで')
+        if split[1]=="晴れ":
+         return images[0]
+        elif split[1]=="くもり":
+            return images[1]      #＝＝（同じ）
+        elif split[1]=="雨":
+            return images[2]
+        elif split[1]=="雪":
+            return  images[3]
+        elif split[1]=="雷雨":
+            return images[4]
+    #単体
+    if weather=="晴れ":
+        return images[0]
+    elif weather=="くもり":
+        return images[1]      #＝＝（同じ）
+    elif weather=="雨":
+        return images[2]
+    elif weather=="雪":
+        return  images[3]
+    elif weather=="雷雨":
+        return images[4]
+    else:
+        return images[2]

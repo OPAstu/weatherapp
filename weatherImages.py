@@ -5,7 +5,7 @@ def images2(weather):
     # 天気に応じた画像を辞書として管理
     images = {
         "晴れ": Image.fromarray(cv2.cvtColor(cv2.imread("static/imagenew/sunny.PNG"), cv2.COLOR_BGR2RGB)),
-        "曇り": Image.fromarray(cv2.cvtColor(cv2.imread("static/imagenew/cloudy.PNG"), cv2.COLOR_BGR2RGB)),
+        "くもり": Image.fromarray(cv2.cvtColor(cv2.imread("static/imagenew/cloudy.PNG"), cv2.COLOR_BGR2RGB)),
         "雨": Image.fromarray(cv2.cvtColor(cv2.imread("static/imagenew/rainy.PNG"), cv2.COLOR_BGR2RGB)),
         "雪": Image.fromarray(cv2.cvtColor(cv2.imread("static/imagenew/snowy.PNG"), cv2.COLOR_BGR2RGB)),
         "雷": Image.fromarray(cv2.cvtColor(cv2.imread("static/imagenew/thunder.PNG"), cv2.COLOR_BGR2RGB)),
